@@ -1,5 +1,34 @@
+import java.util.Scanner;
+
 public class ContaTerminal {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Por favor, digite o número da Agência:");
+        String agencia = scanner.nextLine();
+
+        System.out.println("Por favor, digite o número da Conta:");
+        String numero = scanner.nextLine();
+
+        System.out.println("Por favor, digite o nome do Cliente:");
+        String nomeCliente = scanner.nextLine();
+
+        double saldo = 0.0;
+        boolean saldoValido = false;
+        while (!saldoValido) {
+            System.out.println("Por favor, digite o saldo inicial:");
+            String saldoStr = scanner.nextLine();
+            try {
+                saldo = Double.parseDouble(saldoStr);
+                saldoValido = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, insira um valor numérico válido.");
+            }
+        }
+
+        System.out.println("Olá " + nomeCliente + ", obrigado por criar uma conta em nosso banco, sua agência é " + agencia + ", conta " + numero + " e seu saldo " + saldo + " já está disponível para saque.");
+
+        scanner.close();
     }
 }
+
